@@ -16,6 +16,16 @@ io.on('connection', socket => {
     socket.on('disconnect', () => {
         console.log('User disconnected')
     })
+
+    socket.on('createMessage', newMessage => {
+        console.log('createMessage', newMessage)
+    })
+
+    socket.emit('newMessage', {
+        from: 'Fernando',
+        text: 'Hey, Fernando here!',
+        createAt: 123
+    })
 })
 
 const port = process.env.PORT || 3000
